@@ -72,7 +72,7 @@ export function HeroSection() {
             <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
           </a>
           <a
-            href="#signals"
+            href="https://namo-a48a1730.mintlify.app/"
             className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors duration-200"
           >
             View Documentation
