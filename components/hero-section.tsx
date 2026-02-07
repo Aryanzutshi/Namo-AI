@@ -65,10 +65,10 @@ export function HeroSection() {
 
         <div className="mt-16 flex items-center gap-8">
           <a
-            href="#work"
+            href="tel:+1-240-650-9583"
             className="group inline-flex items-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
           >
-            <ScrambleTextOnHover text="tel:+91-896-855-6472" as="span" duration={0.6} />
+            <ScrambleTextOnHover text="Call us" as="span" duration={0.6} />
             <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
           </a>
           <a
