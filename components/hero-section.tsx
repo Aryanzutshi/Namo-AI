@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { ScrambleTextOnHover } from "@/components/scramble-text"
 import { SplitFlapText, SplitFlapMuteToggle, SplitFlapAudioProvider } from "@/components/split-flap-text"
 import { AnimatedNoise } from "@/components/animated-noise"
@@ -11,6 +11,20 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 export function HeroSection() {
+
+  const [email, setEmail] = useState("")
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+
+    // TODO: wire this to backend / Supabase / Resend / etc.
+    console.log("Email submitted:", email)
+
+    setSubmitted(true)
+  }
+
   const sectionRef = useRef<HTMLElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 
@@ -56,12 +70,34 @@ export function HeroSection() {
         </SplitFlapAudioProvider>
 
         <h2 className="font-[var(--font-bebas)] text-muted-foreground/60 text-[clamp(1rem,3vw,2rem)] mt-4 tracking-wide">
-          A general-purpose Artificial Intelligence 
+          A general-purpose Artificial Intelligence
         </h2>
 
         <p className="mt-12 max-w-md font-mono text-sm text-muted-foreground leading-relaxed">
-          interacting with AI is hard especially for someone who does not know what it is and benefits. NAMO is an architecture that helps us to connect with AI in the most easy way i.e a Phone call 
+          interacting with AI is hard especially for someone who does not know what it is and benefits. NAMO is an architecture that helps us to connect with AI in the most easy way i.e a Phone call
         </p>
+
+        <form
+          onSubmit={handleSubmit}
+          className="mt-8 max-w-md border border-foreground/20 px-4 py-3 flex items-center gap-4 font-mono"
+        >
+          <input
+            type="email"
+            required
+            placeholder="ENTER YOUR EMAIL"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="flex-1 bg-transparent text-xs uppercase tracking-widest text-foreground placeholder:text-muted-foreground/60 focus:outline-none"
+          />
+
+          <button
+            type="submit"
+            disabled={submitted}
+            className="text-xs uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors disabled:opacity-50"
+          >
+            {submitted ? "SENT" : "SUBMIT"}
+          </button>
+        </form>
 
         <div className="mt-16 flex items-center gap-8">
           <a
